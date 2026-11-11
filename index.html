@@ -1,0 +1,220 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nazhika<3 ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #080808, #2b1021, #800b43);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            padding: 35px 25px;
+            width: 90%;
+            max-width: 450px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 25px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 0 30px rgba(255, 20, 100, 0.2);
+        }
+
+        .heart {
+            font-size: 65px;
+            animation: pulse 1.2s infinite;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #ff80b5;
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-size: 17px;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #f5dce8;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        button {
+            padding: 14px 25px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(90deg, #ff4081, #ff80ab);
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 15px rgba(255, 64, 129, 0.4);
+        }
+
+        button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 25px #ff4081;
+        }
+
+        #pesan {
+            display: none;
+            margin-top: 25px;
+            animation: muncul 1s ease;
+        }
+
+        #pesan h2 {
+            color: #ff80b5;
+        }
+
+        .musik {
+            margin-top: 20px;
+            background: transparent;
+            border: 1px solid #ff80b5;
+            box-shadow: none;
+        }
+
+        .falling-heart {
+            position: fixed;
+            top: -30px;
+            color: #ff80b5;
+            animation: jatuh linear forwards;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes jatuh {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes pulse {
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes muncul {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <audio id="lagu" loop>
+        <source src="romantic.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+
+        <div class="heart">❤️</div>
+
+        <h1>HELLO, NAZHIKA</h1>
+
+        <h2>Welcome to my little world ♡</h2>
+
+        <p>
+            Di antara miliaran manusia di dunia,
+            ada satu nama yang selalu punya tempat
+            istimewa di pikiranku.
+            <br><br>
+            And that name is <b>nazhika</b> ❤️
+        </p>
+
+        <button onclick="bukaPesan()">
+            Klik kalau kamu sayang aku ❤️
+        </button>
+
+        <div id="pesan">
+            <h2>Something for you 💗</h2>
+
+            <p>
+                Aku tidak tahu bagaimana hari esok,
+                tapi aku berharap masih ada kamu
+                di dalam cerita indahku.
+                <br><br>
+                Terima kasih sudah menjadi seseorang
+                yang begitu berarti.
+                <br><br>
+                <b>I'M HAPPY TO KNOW YOU, NAZHIKA ❤️</b>
+            </p>
+        </div>
+
+        <button class="musik" onclick="putarMusik()">
+            🎵 Putar Musik
+        </button>
+
+    </div>
+
+    <script>
+        function bukaPesan() {
+            document.getElementById("pesan").style.display = "block";
+        }
+
+        function putarMusik() {
+            const lagu = document.getElementById("lagu");
+
+            if (lagu.paused) {
+                lagu.play();
+            } else {
+                lagu.pause();
+            }
+        }
+
+        function buatHati() {
+            const hati = document.createElement("div");
+
+            hati.className = "falling-heart";
+            hati.innerHTML = "❤️";
+
+            hati.style.left = Math.random() * 100 + "vw";
+            hati.style.fontSize = (15 + Math.random() * 20) + "px";
+            hati.style.animationDuration = (3 + Math.random() * 5) + "s";
+
+            document.body.appendChild(hati);
+
+            setTimeout(() => {
+                hati.remove();
+            }, 8000);
+        }
+
+        setInterval(buatHati, 300);
+    </script>
+
+</body>
+</html>
+```
